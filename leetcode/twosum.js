@@ -31,6 +31,7 @@ var twoSum = function (nums, target) {
 // todo 내 답안
 let twoSum2 = function (nums, target) {
   let i, j, minus;
+  let map = {};
   for (i = 0; i < nums.length; i++) {
     minus = target - nums[i];
     for (j = i + 1; j < nums.length; j++) {
@@ -38,3 +39,57 @@ let twoSum2 = function (nums, target) {
     }
   }
 };
+// Example
+// nums [2, 7, 11, 15]
+// target 9
+// expected [0,1]
+
+// 이해를 돕기위해 다른 input을 대입해봄
+// nums [3, 0, 3]
+// target 6
+// expected [0,2]
+let twoSum3 = function (nums, target) {
+  let i, minus, object;
+  object = {};
+  for (i = 0; i < nums.length; i++) {
+    // * minus에 target - 현재 nums 배열의 값을 저장
+    // loop 1-1 minus == 7
+    // loop 1-2 minus == 2
+
+    // loop 2-1 minus == 3
+    // loop 2-2 minus == 6
+    // loop 2-3 minus == 3
+    minus = target - nums[i];
+
+    // * 만약 object에 minus가 있으면 minus와 같은 값을 가진 key의 index와 현재 루프의 index를 반환
+    if (minus in object) {
+      // todo [object[minus]의 index, 현재 index] == 둘의 key값을 더하면 target의 값과 같음
+      // loop 1-1 [ minus == 7, nums[0] == 2]
+      // loop 1-2 [ minus == 2, nums[1] == 7]
+
+      // loop 2-1 [minus == 3, nums[0] == 3]
+      // loop 2-2 [minus == 6, nums[0] == 0]
+      // loop 2-3 [minus == 3, nums[0] == 3]
+      return [object[minus], i];
+    }
+
+    // * object에 키 값을 nums[i]으로, index값을 value로 저장
+    object[nums[i]] = i;
+    // todo object [key:nums[i], value: i]
+    // loop 1-1 { key(input 2) : value(index 0)}
+    // loop 1-2 {
+    //  key(input 2) : value(index 0),
+    //  key(input 7) : value(index 1)
+    // }
+    //
+    // loop 2-1 { key(input 3) : value(index 0) }
+    // loop 2-2 { key(input 3) : value(index 0)
+    //            key(input 0) : value(index 1) }
+    // loop 2-3 { key(input 3) : value(index 0)
+    //            key(input 0) : value(index 1)
+    //            key(input 3) : value(index 2) }
+    //
+  }
+};
+// ? 근데 저 위에분 답안하고 내꺼랑 for 중첩 수가 같아서 시간 차이는 비슷함
+// ? for 중첩을 하나로 줄이려면 minus 값을 객체에 저장하고 다시 루프를 돌려서 계속 저장?
