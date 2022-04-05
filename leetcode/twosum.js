@@ -31,7 +31,6 @@ var twoSum = function (nums, target) {
 // todo 내 답안
 let twoSum2 = function (nums, target) {
   let i, j, minus;
-  let map = {};
   for (i = 0; i < nums.length; i++) {
     minus = target - nums[i];
     for (j = i + 1; j < nums.length; j++) {
