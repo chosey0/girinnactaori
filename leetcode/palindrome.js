@@ -16,7 +16,6 @@ var isPalindrome = function (x) {
 
   // * 통과
   let reverse, notReverse, n, bool;
-
   notReverse = x.toString().split("");
   reverse = x.toString().split("").reverse();
 
