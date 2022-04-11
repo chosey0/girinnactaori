@@ -5,7 +5,7 @@
 var romanToInt = function (s) {
   let I, V, X, L, C, D, M;
   let result = 0;
-  const romanNum = {
+  const excNum = {
     'I': 1,
     'V': 5,
     'X': 10,
@@ -14,9 +14,11 @@ var romanToInt = function (s) {
     'D': 500,
     'M': 1000
   }
-  for(i = 0; i<s.length; i++){
-    const excNum = romanNum[s[i]]
-    console.log(romanNum[s[i]]);
-  }
+  for (i = 0; i < s.length; i++) {
+    const value = excNum[s[i]];
+    console.log(value)
+  };
+  
 };
-romanToInt("IIV")
+
+romanToInt("VII")
